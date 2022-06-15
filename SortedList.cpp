@@ -5,7 +5,7 @@
 template<class T>
 SortedList<T>::SortedList() {
     length = 0;
-    currentPos = -1;  // 0
+    currentPos = 0;  // 0
 }
 
 template<class T>
@@ -30,13 +30,37 @@ bool SortedList<T>::Contains(T someItem) {
 }
 
 template<class T>
-void SortedList<T>::PutItem(T item) {
+void SortedList<T>::AddItem(T item) {
+
+    for (int i = 0; i < length; i++) {
+        if (info[i] > item) {
+
+            //slide over all elements
+            for (int j = length; j != i+1; j--) {
+                info[j] = info[j-1];
+            }
+            info[i] = item;
+            length++;
+            return;
+        }
+    }
 
 }
 
 template<class T>
 void SortedList<T>::DeleteItem(T item) {
 
+    for (int i = 0; i < length; i++) {
+        if (info[i] == item) {
+
+            //slide over all elements
+            for (int j = i+1; j < length; j++) {
+                info[j] = info[j-1];
+            }
+            length--;
+            return;
+        }
+    }
 }
 
 template<class T>

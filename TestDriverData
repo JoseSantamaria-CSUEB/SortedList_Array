@@ -1,11 +1,10 @@
-PutItem 42
 GetLength
-PutItem 5
-PutItem 7
-PutItem 6
-PutItem 9
+AddItem 5
+AddItem 7
+AddItem 6
+AddItem 9
 PrintList
-PutItem 1
+AddItem 1
 PrintList
 Contains 4
 Contains 5
