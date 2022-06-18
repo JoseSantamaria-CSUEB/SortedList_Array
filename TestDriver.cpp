@@ -64,11 +64,20 @@ int main()
 		}
 		else if (command == "DeleteItem")
 		{
-			//inFile >> item;
-			cin >> item;
-			list.DeleteItem(item);
-			outFile << item;
-			outFile << " is deleted." << endl;
+			inFile >> item;
+			//cin >> item;
+            if (list.Contains(item)){
+                list.DeleteItem(item);
+                outFile << item;
+                outFile << " is deleted." << endl;
+                cout << item << " is deleted." << endl;
+            }
+            else {
+                outFile << item;
+                outFile << " is not in list." << endl;
+                cout << item << " is not in list." << endl;
+            }
+
 		}
 		else if (command == "Contains")
 		{
@@ -88,12 +97,19 @@ int main()
             cout << "Length is " << list.GetLength() << endl;
 		}
 		else if (command == "IsFull") {
-			if (list.IsFull())
-				outFile << "List is full." << endl;
-			else outFile << "List is not full." << endl;
+			if (list.IsFull()) {
+                outFile << "List is full." << endl;
+                cout << "list is full." << endl;
+            }
+            else {
+                outFile << "List is not full." << endl;
+                cout << "List is not full." << endl;
+            }
 		}
 		else if (command == "MakeEmpty") {
 			list.MakeEmpty();
+            outFile << "MakeEmpty was called." << endl;
+            cout << "MakeEmpty was called." << endl;
 		}
 		else if (command == "PrintList") {
 			PrintList(outFile, list);
@@ -122,7 +138,7 @@ void PrintList(ofstream& dataFile, SortedList<int>& list)
 {
 	int length;
 	int item;
-	dataFile << "PrintList" << endl;
+	dataFile << "PrintList: ";
 	cout << "PrintList: ";
 	list.ResetIterator();	// Sets currentPos = -1.  Start at the beginning of list
 

@@ -6,6 +6,7 @@ AddItem 9
 GetLength
 PrintList
 AddItem 1
+GetLength
 PrintList
 Contains 4
 Contains 5
@@ -14,11 +15,15 @@ Contains 10
 IsFull
 DeleteItem 5
 IsFull
+GetLength
+PrintList
 DeleteItem 1
 DeleteItem 6
+DeleteItem 8
 DeleteItem 9
 PrintList
 MakeEmpty
+GetLength
 PrintList
 Error
 Quit

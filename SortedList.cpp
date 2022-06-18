@@ -27,8 +27,8 @@ template<class T>
 bool SortedList<T>::Contains(T someItem) {
 
     // Go through all the items
-    for (int i = 0; i <length; i++) {
-        if (info[i] = someItem) {
+    for (int i = 0; i < length; i++) {
+        if (info[i] == someItem) {
             return true;
         }
     }
@@ -38,30 +38,45 @@ bool SortedList<T>::Contains(T someItem) {
 template<class T>
 void SortedList<T>::AddItem(T item) {
 
-    for (int i = 0; i < length; i++) {
-        if (info[i] > item) {
-
-            //slide over all elements
-            for (int j = length; j != i+1; j--) {
-                info[j] = info[j-1];
+    int locIndex;
+    if (length == 0 | info[length-1] <= item) {
+        info[length] = item;
+        length++;
+        return;
+    }
+    else {
+        for (int i = 0; i < length; i++) {
+            if (info[i] > item ) {
+                locIndex = i;
+                break;
             }
-            info[i] = item;
-            length++;
-            return;
         }
     }
 
+    for (int j = length; j > locIndex; j--) {
+        info[j] = info[j-1];
+    }
+    info[locIndex] = item;
+    length++;
 }
 
 template<class T>
 void SortedList<T>::DeleteItem(T item) {
 
+//    int locIndex;
+//    for (int i = 0; i < length; i++) {
+//        if (info[i] == item) {
+//            locIndex = i;
+//            std::cout << item << " is at index " << i << std::endl;
+//        }
+//    }
+
     for (int i = 0; i < length; i++) {
         if (info[i] == item) {
 
             //slide over all elements
-            for (int j = i+1; j < length; j++) {
-                info[j] = info[j-1];
+            for (int j = i; j < length; j++) {
+                info[j] = info[j+1];
             }
             length--;
             return;
