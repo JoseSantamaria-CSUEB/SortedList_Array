@@ -26,15 +26,18 @@ int main()
 
 	// Prompt for file names, read file names, and prepare files
 	cout << "Enter name of input command file: ";
-	cin >> inFileName;
+	//cin >> inFileName;
+    inFileName = "TestDriverData"; // hard coding filename
 	inFile.open(inFileName);
 
 	cout << "Enter name of output file: ";
-	cin >> outFileName;
+	//cin >> outFileName;
+    outFileName = "results.txt"; // hard coding name
 	outFile.open(outFileName);
 
 	cout << "Enter name of test run: ";
-	cin >> outputLabel;
+	//cin >> outputLabel;
+    outputLabel = "Test_run"; cout << endl;// hard coding name
 
 	outFile << outputLabel << endl;
 	if (!inFile)
@@ -50,13 +53,14 @@ int main()
 	while (command != "Quit")
 	{
 		//cout << "Command: " << command;
-		if (command == "PutItem")
+		if (command == "AddItem")
 		{
 			inFile >> item;
 			//cin >> item;
-			list.PutItem(item);
+			list.AddItem(item);
 			outFile << item;
-			outFile << " is in list." << endl;
+			outFile << " is added to list." << endl;
+            cout << item << " is added to list." << endl;
 		}
 		else if (command == "DeleteItem")
 		{
@@ -80,7 +84,8 @@ int main()
 			}
 		}
 		else if (command == "GetLength") {
-			outFile << "Length is " << list.GetLength() << endl;
+            outFile << "Length is " << list.GetLength() << endl;
+            cout << "Length is " << list.GetLength() << endl;
 		}
 		else if (command == "IsFull") {
 			if (list.IsFull())
@@ -118,12 +123,16 @@ void PrintList(ofstream& dataFile, SortedList<int>& list)
 	int length;
 	int item;
 	dataFile << "PrintList" << endl;
-	cout << ": ";
+	cout << "PrintList: ";
 	list.ResetIterator();	// Sets currentPos = -1.  Start at the beginning of list
 
 	length = list.GetLength();
-	if (length == 0)
-		dataFile << "List is empty.";
+	if (length == 0) {
+        dataFile << "List is empty.";
+        cout << " List is empty." << endl;
+    }
+
+
 	else
 		for (int counter = 0; counter < list.GetLength(); counter++)
 		{

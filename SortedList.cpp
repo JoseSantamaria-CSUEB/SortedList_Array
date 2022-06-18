@@ -26,6 +26,12 @@ int SortedList<T>::GetLength() const {
 template<class T>
 bool SortedList<T>::Contains(T someItem) {
 
+    // Go through all the items
+    for (int i = 0; i <length; i++) {
+        if (info[i] = someItem) {
+            return true;
+        }
+    }
     return false;
 }
 

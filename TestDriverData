@@ -3,6 +3,7 @@ AddItem 5
 AddItem 7
 AddItem 6
 AddItem 9
+GetLength
 PrintList
 AddItem 1
 PrintList
